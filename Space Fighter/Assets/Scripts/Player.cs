@@ -6,11 +6,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Configuration parameters
+    [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
+    [SerializeField] int health = 100;
+
+    [Header("Projectile")]
     [SerializeField] float projectileSpeed = 0f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
-
     [SerializeField] GameObject laserPrefab; // Copy of the player laser game object
 
     Coroutine firingCoroutine; // variable to implement the coroutine and to stop it when needed
@@ -31,6 +34,28 @@ public class Player : MonoBehaviour
     {
         Move();
         Fire();
+    }
+
+    private void OnTriggerEnter2D(Collider2D otherGameObject)
+    {
+        // Implementing the other game object damage into damageDealer
+        DamageDealer damageDealer = otherGameObject.gameObject.GetComponent<DamageDealer>();
+
+        if (!damageDealer) { return; } // Prevent Null exception
+
+        ProcessHit(damageDealer);
+    }
+
+    // Calculating player health - if less or equal to 0 ~> destroy object
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        health -= damageDealer.GetDamage();
+        damageDealer.Hit(); // Destroying the projetile on hit
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Fire()

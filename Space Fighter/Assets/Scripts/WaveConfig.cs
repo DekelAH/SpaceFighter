@@ -21,6 +21,7 @@ public class WaveConfig : ScriptableObject
 
     // Giving access to list of way points
     public List<Transform> GetWayPoints() 
+
     {
         var waveWayPoints = new List<Transform>();
 
