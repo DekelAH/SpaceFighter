@@ -10,11 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
     [SerializeField] int health = 100;
+    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.75f; // Range of volume between 0 - 1
+    [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.25f; // Range of volume between 0 - 1
+
 
     [Header("Projectile")]
     [SerializeField] float projectileSpeed = 0f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
     [SerializeField] GameObject laserPrefab; // Copy of the player laser game object
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip shootSound;
 
     Coroutine firingCoroutine; // variable to implement the coroutine and to stop it when needed
 
@@ -54,8 +59,20 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            PlayerDies();
         }
+    }
+
+    private void PlayerDies()
+    {
+        Destroy(gameObject);
+
+        // Creating the explosion VFX by the game object itself + location + rotation
+        //GameObject explosion = Instantiate(particleExplosion, transform.position, transform.rotation);
+        //Destroy(explosion, durationOfExplosion); // Destroying the explosion game object after X seconds
+        // Placing the audio sound at the main camera + volume range
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+
     }
 
     private void Fire()
@@ -82,6 +99,8 @@ public class Player : MonoBehaviour
 
             // Getting the rigidbody2D component and setting the velocity to the laser at the Y axis
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
 
             // Setting the rate of fire (wait X secs between projectiles)
             yield return new WaitForSeconds(projectileFiringPeriod);

@@ -113,8 +113,15 @@ MonoBehaviour:
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 1
   enemyProjectileSpeed: 10
-  EnemeyLaserPrefab: {fileID: 1751888229744448072, guid: 02bf78f168a76174382c42ff4cbe1040,
+  durationOfExplosion: 0.3
+  deathSoundVolume: 0.75
+  shootSoundVolume: 0.5
+  particleExplosion: {fileID: 3456225440299700440, guid: 6bcecc69742d36e40aa0fd5b7bbc17e2,
     type: 3}
+  EnemeyLaserPrefab: {fileID: 1751888229744448072, guid: 6a3bedc9775350d48bfcf92b1cf22504,
+    type: 3}
+  deathSound: {fileID: 8300000, guid: 2d71382429c7f4949ade9f25e98e0515, type: 3}
+  shootSound: {fileID: 8300000, guid: 4a14985fcced5674bb9a3ec19845dc96, type: 3}
 --- !u!58 &8906673381373833935
 CircleCollider2D:
   m_ObjectHideFlags: 0
