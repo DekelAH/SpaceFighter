@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy")]
+    [Header("Enemy Stats")]
     [SerializeField] float health = 100; // Enemy health
+    [SerializeField] int scoreValue = 125;
 
     [Header("Projectile")]
-    [SerializeField] float shotCounter; // After X of shots, restart the counter to make the shots more random
+    float shotCounter; // After X of shots, restart the counter to make the shots more random
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] float enemyProjectileSpeed = 10f;
@@ -82,6 +83,9 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDies()
     {
+        // Finding game session object and calling addToScore() and setting the enemy scoreValue into it
+        FindObjectOfType<GameSession>().AddToScore(scoreValue);
+
         Destroy(gameObject);
 
         // Creating the explosion VFX by the game object itself + location + rotation

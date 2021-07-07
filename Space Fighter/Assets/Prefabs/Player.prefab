@@ -99,7 +99,7 @@ MonoBehaviour:
   padding: 0.5
   health: 100
   projectileSpeed: 18
-  projectileFiringPeriod: 0.1
+  projectileFiringPeriod: 0.05
   laserPrefab: {fileID: 5578286336157894348, guid: c01f553165d9803409329016e2d4baf7,
     type: 3}
   particleExplosion: {fileID: 3456225440299700440, guid: 6bcecc69742d36e40aa0fd5b7bbc17e2,

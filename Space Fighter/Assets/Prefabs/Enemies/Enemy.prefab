@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a5a15cc9b09e3e4fad16603b131f964, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9be79206cd32b82428150ea41b810756, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,19 +111,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+  scoreValue: 123
   shotCounter: 0
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 1
   enemyProjectileSpeed: 10
-  durationOfExplosion: 0.3
-  deathSoundVolume: 0.75
-  shootSoundVolume: 0.221
-  particleExplosion: {fileID: 3456225440299700440, guid: 6bcecc69742d36e40aa0fd5b7bbc17e2,
-    type: 3}
   EnemeyLaserPrefab: {fileID: 1751888229744448072, guid: 6a3bedc9775350d48bfcf92b1cf22504,
     type: 3}
+  deathSoundVolume: 0.75
+  shootSoundVolume: 0.221
   deathSound: {fileID: 8300000, guid: 2d71382429c7f4949ade9f25e98e0515, type: 3}
   shootSound: {fileID: 8300000, guid: 4a14985fcced5674bb9a3ec19845dc96, type: 3}
+  durationOfExplosion: 0.3
+  particleExplosion: {fileID: 3456225440299700440, guid: 6bcecc69742d36e40aa0fd5b7bbc17e2,
+    type: 3}
 --- !u!58 &8906673381373833935
 CircleCollider2D:
   m_ObjectHideFlags: 0

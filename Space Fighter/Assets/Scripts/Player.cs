@@ -84,6 +84,11 @@ public class Player : MonoBehaviour
 
     }
 
+    public int GetHealth()
+    {
+        return health;
+    }
+
     private void Fire()
     {
         // While hold the space key the coroutine - FireContinuously() starts
