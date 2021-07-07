@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy")]
     [SerializeField] float health = 100; // Enemy health
+
+    [Header("Projectile")]
     [SerializeField] float shotCounter; // After X of shots, restart the counter to make the shots more random
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] float enemyProjectileSpeed = 10f;
-    [SerializeField] float durationOfExplosion = 0.1f;
+    [SerializeField] GameObject EnemeyLaserPrefab;
+
+    [Header("Sound Effects")]
     [SerializeField] [Range(0,1)] float deathSoundVolume = 0.75f; // Range of volume between 0 - 1
     [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.25f; // Range of volume between 0 - 1
-
-    [SerializeField] GameObject particleExplosion;
-    [SerializeField] GameObject EnemeyLaserPrefab;
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip shootSound;
+
+    [Header("Visual Effects")]
+    [SerializeField] float durationOfExplosion = 0.1f;
+    [SerializeField] GameObject particleExplosion;
 
 
     // Start is called before the first frame update

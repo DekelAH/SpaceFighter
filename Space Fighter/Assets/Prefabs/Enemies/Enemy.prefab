@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -3841155447380536086}
   - component: {fileID: -8562648831016010067}
   - component: {fileID: 8906673381373833935}
+  - component: {fileID: -5373731890893918154}
+  - component: {fileID: -1114119652411473658}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -115,7 +117,7 @@ MonoBehaviour:
   enemyProjectileSpeed: 10
   durationOfExplosion: 0.3
   deathSoundVolume: 0.75
-  shootSoundVolume: 0.5
+  shootSoundVolume: 0.221
   particleExplosion: {fileID: 3456225440299700440, guid: 6bcecc69742d36e40aa0fd5b7bbc17e2,
     type: 3}
   EnemeyLaserPrefab: {fileID: 1751888229744448072, guid: 6a3bedc9775350d48bfcf92b1cf22504,
@@ -138,3 +140,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.03690584}
   serializedVersion: 2
   m_Radius: 0.50190586
+--- !u!50 &-5373731890893918154
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082006345130876139}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-1114119652411473658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6082006345130876139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4403fadf45bd4429c585573d0109db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100

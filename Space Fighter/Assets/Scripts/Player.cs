@@ -10,14 +10,19 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
     [SerializeField] int health = 100;
-    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.75f; // Range of volume between 0 - 1
-    [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.25f; // Range of volume between 0 - 1
-
 
     [Header("Projectile")]
     [SerializeField] float projectileSpeed = 0f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
     [SerializeField] GameObject laserPrefab; // Copy of the player laser game object
+
+    [Header("Visual Effects")]
+    [SerializeField] GameObject particleExplosion;
+    [SerializeField] float durationOfExplosion = 0.1f;
+
+    [Header("Sound Effects")]
+    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.75f; // Range of volume between 0 - 1
+    [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.25f; // Range of volume between 0 - 1
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip shootSound;
 
@@ -68,10 +73,14 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
 
         // Creating the explosion VFX by the game object itself + location + rotation
-        //GameObject explosion = Instantiate(particleExplosion, transform.position, transform.rotation);
-        //Destroy(explosion, durationOfExplosion); // Destroying the explosion game object after X seconds
+        GameObject explosion = Instantiate(particleExplosion, transform.position, transform.rotation);
+
+        Destroy(explosion, durationOfExplosion); // Destroying the explosion game object after X seconds
+
         // Placing the audio sound at the main camera + volume range
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+
+        FindObjectOfType<Level>().LoadGameOver();
 
     }
 
